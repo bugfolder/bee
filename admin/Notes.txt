@@ -1,0 +1,27 @@
+Notes
+
+For development of Bee tests, we can develop and run tests locally putting commands under development into the DevTest.php file in this folder.
+
+Then navigate to backdrop root of a working Backdrop installation, e.g.,
+
+cd ~/Sites/backdrop/webroot
+
+and run this command:
+
+~/Sites/bee/phpunit --configuration ~/Sites/bee/admin/phpunit.xml --testsuite dev
+
+Once the test is confirmed to work, it can be pasted into one of the existing Bee test suite commands or added as a new test file (appropriately named).
+
+To run the regular bee tests (not multisite, though), run
+
+~/Sites/bee/phpunit --configuration ~/Sites/bee/tests/phpunit.xml --testsuite backdrop
+
+Note, the phpunit file in the bee folder is not part of the repo; it is downloaded separately and then gitignored.
+
+This was (I think) the set of commands to download it:
+
+cd ~/Sites/bee
+wget -q --show-progress -O phpunit https://phar.phpunit.de/phpunit-8.5.phar
+chmod +x phpunit
+
+I must have downloaded it in the past since it's there now.
