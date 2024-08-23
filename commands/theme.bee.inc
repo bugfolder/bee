@@ -35,26 +35,6 @@ function theme_bee_command() {
         'bee theme-admin basis' => bt('Set Basis as the admin theme.'),
       ),
     ),
-    'theme-enable-debug' => array(
-      'description' => bt('Enable theme debugging.'),
-      'callback' => 'theme_bee_enable_debug_callback',
-      'group' => 'themes',
-      'aliases' => array('ted'),
-      'bootstrap' => BEE_BOOTSTRAP_FULL,
-      'examples' => array(
-        'bee theme-enable-debug' => bt('Enable theme debugging.'),
-      ),
-    ),
-    'theme-disable-debug' => array(
-      'description' => bt('Disable theme debugging.'),
-      'callback' => 'theme_bee_disable_debug_callback',
-      'group' => 'themes',
-      'aliases' => array('tdd'),
-      'bootstrap' => BEE_BOOTSTRAP_FULL,
-      'examples' => array(
-        'bee theme-disable-debug' => bt('Disable theme debugging.'),
-      ),
-    ),
   );
 }
 
@@ -120,22 +100,4 @@ function theme_admin_bee_callback($arguments, $options) {
 
   // Flush caches.
   backdrop_flush_all_caches();
-}
-
-/**
- * Command callback: Enable theme debugging.
- */
-function theme_bee_enable_debug_callback($arguments, $options) {
-  config_set('system.core', 'theme_debug', 1);
-
-  bee_message(bt('Theme debugging has been turned on.'), 'success');
-}
-
-/**
- * Command callback: Enable theme debugging.
- */
-function theme_bee_disable_debug_callback($arguments, $options) {
-  config_set('system.core', 'theme_debug', 0);
-
-  bee_message(bt('Theme debugging has been turned off.'), 'success');
 }
